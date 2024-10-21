@@ -11,19 +11,36 @@ app = Ursina()
 class Player(FirstPersonController):
     def __init__(self):
         super().__init__(
-            speed = 10,
+            speed = 2090,
             model = 'cube',
             collider = 'mesh',
             scale = 1,
+            jump_height = 5000,
             position = (0,0,0)
+
         )
 EditorCamera()
 
-class Warp():
-    def__init__(self):
-    super().__init__(
-        
-    )
+class Warp(Entity):
+    def __init__(self,i,j):
+        super().__init__(
+            warp = Entity(
+                model = 'cube',
+                #color = color.red,
+                scale = (5 ,5 ,5),
+                position = (i * 5, 1, j * 5),
+                collider = 'box',
+                texture = 'images/wall.jpg'
+            )
+        )
+        self.a = player
+
+        def update(self):
+            self.gnlwns
+
+        def gnlwns(self):
+            if self.warp.intersects(a):
+                self.a.position = (95,3,90)
 
 class Exit(Entity):
     def __init__(self, i, j):
@@ -73,7 +90,7 @@ MAP = [
     [11,12,13,14,15,16,17,18,__,20,22,__,22,__,23,__,__,__,__,28,29,__,__,__,33,22,33,22,33],
     [11,12,13,14,15,16,17,18,__,20,22,__,22,__,23,__,25,26,__,__,29,__,31,__,33,22,33,22,33],
     [11,12,13,14,15,16,17,18,__,20,22,__,22,__,23,__,25,__,27,__,29,__,31,__,33,22,33,22,33],
-    [11,12,13,14,15,16,17,18,__,20,22,__,22,__,__,__,__,__,27,__,29,30,31,__,33,__,33,22,33],
+    [11,12,13,14,15,16,17,18,'w',20,22,__,22,__,__,__,__,__,27,__,29,30,31,__,33,__,33,22,33],
     [11,12,13,14,15,16,17,18,__,20,22,__,22,22,23,24,__,26,27,__,__,__,31,__,__,__,33,22,33],
     [11,12,13,14,15,16,17,18,__,20,22,__,__,__,23,__,__,26,__,28,29,__,31,33,33,__,33,22,33],
     [11,12,13,14,15,16,17,18,__,20,22,22,22,__,23,24,__,26,__,28,29,__,31,33,33,__,33,22,33],
@@ -97,9 +114,9 @@ for i in range(len(MAP)):
                 player.position = (i * 5, 0, j * 5)
                 continue
 
-            if MAP[i][j] == 'e':
-                exitdoor = Exit(i,j)
-                continue
+            if MAP[i][j] =='w':
+                 warp = Warp(i,j)
+                 continue
 
             if MAP[i][j] =='d':
                 duck.position = (i * 5, 0, j * 5)
@@ -119,7 +136,7 @@ ground = Entity(
     model = 'plane',
     color = color.gray,
     position = (0, 0, 0),
-    scale = (2000, 1, 2000), 
+    scale = (100000, 2, 100000), 
     collider = 'mesh'#물체의 충돌판정 형태를 설정합니다. mesh: 그물망형태
 )
 
