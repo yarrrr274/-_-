@@ -17,6 +17,13 @@ class Player(FirstPersonController):
             scale = 1,
             position = (0,0,0)
         )
+EditorCamera()
+
+class Warp():
+    def__init__(self):
+    super().__init__(
+        
+    )
 
 class Exit(Entity):
     def __init__(self, i, j):
