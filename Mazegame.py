@@ -35,13 +35,6 @@ class Warp(Entity):
         )
         self.a = player
 
-        def update(self):
-            self.gnlwns
-
-        def gnlwns(self):
-            if self.warp.intersects(a):
-                self.a.position = (95,3,90)
-
 class Exit(Entity):
     def __init__(self, i, j):
         super().__init__(
